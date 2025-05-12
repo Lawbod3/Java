@@ -50,9 +50,20 @@ public class MyMap<K,V> {
     }
 
 
+    public List<K> keySet() {
+        List<K> keys = new ArrayList<>();
+        for (MyGenericEntry entry : myEntries) {
+            keys.add((K) entry.getKey());
+        }
+        return keys;
 
+    }
 
-
-
-
+    public List<V> values() {
+        List<V> values = new ArrayList<>();
+        for (MyGenericEntry entry : myEntries) {
+            values.add((V) entry.getValue());
+        }
+        return values;
+    }
 }

@@ -68,7 +68,31 @@ public class MyMapTest {
               break;
             }
         }
+
     }
+
+    @Test
+    public void testMyMapIsEmptyIterable() {
+        MyMap<String, String> myMap = new MyMap<>();
+        for(String value : myMap.keySet()){
+            assertFalse(myMap.containsKey(value));
+
+        }
+    }
+
+    @Test
+    public void testMyMapCanIterateValues() {
+        MyMap<Integer, String> myMap = new MyMap<>();
+        myMap.put(1, "1" );
+        myMap.put(2, "2" );
+        myMap.put(3, "3" );
+        for(String value : myMap.values()){
+            assertTrue(myMap.containsValue(value));
+        }
+    }
+
+
+
 
 
     
