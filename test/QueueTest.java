@@ -6,66 +6,66 @@ import static org.junit.Assert.*;
 public class QueueTest {
     @Test
     public void testMYQueueMethod_isEmpty() {
-        Queue MyQueue = new Queue(5);
+        RealQueue MyQueue = new RealQueue(5);
         assertTrue(MyQueue.isEmpty());
 
     }
     @Test
     public void testMYQueueMethod_add() {
-        Queue MyQueue = new Queue(5);
-        MyQueue.add("Bode");
+        RealQueue MyQueue = new RealQueue(5);
+        MyQueue.enqueue("Bode");
         assertFalse(MyQueue.isEmpty());
     }
     @Test
     public void testMYQueueMethod_pop() {
-        Queue MyQueue = new Queue(5);
-        MyQueue.add("Bode");
-        MyQueue.pop();
+        RealQueue MyQueue = new RealQueue(5);
+        MyQueue.enqueue("Bode");
+        MyQueue.dequeue();
         assertTrue(MyQueue.isEmpty());
     }
     @Test
     public void  testMYQueueMethod_isFull() {
-        Queue MyQueue = new Queue(2);
-        MyQueue.add("Bode");
-        MyQueue.add("Bode");
-        assertTrue(MyQueue.full());
+        RealQueue MyQueue = new RealQueue(2);
+        MyQueue.enqueue("Bode");
+        MyQueue.enqueue("Bode");
+        assertTrue(MyQueue.isFull());
     }
     @Test
     public void testMYQueueMethodThrowExceptionIfFull() {
-        Queue MyQueue = new Queue(2);
-        MyQueue.add("Bode");
-        MyQueue.add("Bode");
-        assertThrows(IllegalArgumentException.class,() -> MyQueue.add("Bode"));
+        RealQueue MyQueue = new RealQueue(2);
+        MyQueue.enqueue("Bode");
+        MyQueue.enqueue("Bode");
+        assertThrows(IndexOutOfBoundsException.class,() -> MyQueue.enqueue("Bode"));
     }
     @Test
     public void testMYQueueMethodThrowExceptionIfEmpty() {
-        Queue MyQueue = new Queue(2);
-        MyQueue.add("Bode");
-        MyQueue.add("Bode");
-        assertThrows(IllegalArgumentException.class,() -> MyQueue.add("Bode"));
-        MyQueue.pop();
-        MyQueue.pop();
-        assertThrows(IllegalArgumentException.class,() -> MyQueue.pop());
+        RealQueue MyQueue = new RealQueue(2);
+        MyQueue.enqueue("Bode");
+        MyQueue.enqueue("Bode");
+        assertThrows(IndexOutOfBoundsException.class,() -> MyQueue.enqueue("Bode"));
+        MyQueue.dequeue();
+        MyQueue.dequeue();
+        assertThrows(IllegalArgumentException.class,() -> MyQueue.dequeue());
     }
     @Test
     public void testMYQueueMethod_peek() {
-        Queue MyQueue = new Queue(2);
-        MyQueue.add("Bode");
-        MyQueue.add("Lawal");
+        RealQueue MyQueue = new RealQueue(2);
+        MyQueue.enqueue("Bode");
+        MyQueue.enqueue("Lawal");
         assertEquals("Bode", MyQueue.peek());
     }
     @Test
     public void testMYQueueMethod_element() {
-        Queue MyQueue = new Queue(2);
-        MyQueue.add("Bode");
-        MyQueue.add("Lawal");
+        RealQueue MyQueue = new RealQueue(2);
+        MyQueue.enqueue("Bode");
+        MyQueue.enqueue("Lawal");
         assertTrue(MyQueue.element("Bode"));
     }
     @Test
     public void testMYQueueMethod_size() {
-        Queue MyQueue = new Queue(2);
-        MyQueue.add("Bode");
-        assertEquals(1, MyQueue.size());
+        RealQueue MyQueue = new RealQueue(2);
+        MyQueue.enqueue("Bode");
+        assertEquals(2, MyQueue.getSize());
     }
 
 }
